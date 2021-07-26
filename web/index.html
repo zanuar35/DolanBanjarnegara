@@ -24,6 +24,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="dolan_banjarnegara">
+  <meta name="google-signin-client_id" content="768234304071-877i9jgfks7ukvn8utp3al9fbsvr3867.apps.googleusercontent.com">
+
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <title>dolan_banjarnegara</title>
@@ -96,6 +98,25 @@
       // Service workers not supported. Just drop the <script> tag.
       loadMainDartJs();
     }
+  </script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyB_qxtDAgJr0fSVZIgv7G1oNu6uj4H7ChE",
+      authDomain: "dolanbanjarnegara-b66b7.firebaseapp.com",
+      projectId: "dolanbanjarnegara-b66b7",
+      storageBucket: "dolanbanjarnegara-b66b7.appspot.com",
+      messagingSenderId: "768234304071",
+      appId: "1:768234304071:web:92e5cefdec974fdbeff762"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
   </script>
 </body>
 </html>
