@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, must_be_immutable
 import 'package:flutter/material.dart';
 
 class PassFormField extends StatelessWidget {

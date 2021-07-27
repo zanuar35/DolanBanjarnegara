@@ -1,7 +1,4 @@
-import 'package:dolan_banjarnegara/authentication.dart';
 import 'package:dolan_banjarnegara/model/penginapan.dart';
-import 'package:dolan_banjarnegara/screen/dashboard/dashboard.dart';
-import 'package:dolan_banjarnegara/screen/info_wisata/widgets/container_card.dart';
 import 'package:dolan_banjarnegara/shared/footer.dart';
 import 'package:dolan_banjarnegara/shared/header.dart';
 import 'package:flutter/material.dart';

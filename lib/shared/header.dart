@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:dolan_banjarnegara/screen/dashboard/dashboard.dart';
-import 'package:dolan_banjarnegara/screen/login_screen/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';

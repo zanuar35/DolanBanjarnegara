@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:dolan_banjarnegara/screen/login_screen/widget/containerTextPass.dart';
 import 'package:dolan_banjarnegara/screen/login_screen/widget/emailTextField.dart';

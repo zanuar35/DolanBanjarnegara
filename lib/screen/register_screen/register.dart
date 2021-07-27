@@ -1,8 +1,7 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'dart:async';
 
-import 'package:dolan_banjarnegara/screen/login_screen/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';

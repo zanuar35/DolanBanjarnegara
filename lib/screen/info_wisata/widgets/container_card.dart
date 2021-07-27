@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ContainerCard extends StatelessWidget {
   const ContainerCard({
+    this.onPressed,
     this.url,
     Key key,
     this.nama,
@@ -9,6 +10,7 @@ class ContainerCard extends StatelessWidget {
 
   final String url;
   final String nama;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -44,18 +46,21 @@ class ContainerCard extends StatelessWidget {
                     style: TextStyle(fontSize: blockHorizontal * 1.17))
               ],
             ),
-            Container(
-                width: blockHorizontal * 7.8,
-                height: blockVertical * 6.5,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xff49BCC3)),
-                child: const Center(
-                  child: Text(
-                    'Lihat',
-                    style: TextStyle(color: Colors.white, fontSize: 15),
-                  ),
-                ))
+            InkWell(
+              onTap: onPressed,
+              child: Container(
+                  width: blockHorizontal * 7.8,
+                  height: blockVertical * 6.5,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xff49BCC3)),
+                  child: const Center(
+                    child: Text(
+                      'Lihat',
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  )),
+            )
           ],
         ),
       ),
