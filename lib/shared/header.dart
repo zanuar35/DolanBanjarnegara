@@ -63,10 +63,7 @@ class ContainerHeader extends StatelessWidget {
                           await FirebaseAuth.instance.signOut();
                           EasyLoading.showSuccess('Bye Bye :(');
                           Timer(const Duration(seconds: 2), () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()));
+                            Navigator.pop(context);
                           });
                         },
                         child: Container(

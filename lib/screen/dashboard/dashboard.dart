@@ -1,3 +1,4 @@
+import 'package:dolan_banjarnegara/screen/info_kuliner/info_kuliner.dart';
 import 'package:dolan_banjarnegara/screen/info_penginapan/info_penginapan.dart';
 import 'package:dolan_banjarnegara/screen/info_wisata/info_wisata.dart';
 import 'package:dolan_banjarnegara/shared/footer.dart';
@@ -27,10 +28,7 @@ class Dashboard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         ContainerCard(
-                            header: MediaQuery.of(context)
-                                .size
-                                .width
-                                .toStringAsFixed(3),
+                            header: 'info Wisata',
                             subtitle: 'Info Wisata',
                             onPressed: () {
                               Navigator.push(
@@ -41,10 +39,15 @@ class Dashboard extends StatelessWidget {
                               );
                             }),
                         ContainerCard(
-                          header: MediaQuery.of(context)
-                              .size
-                              .height
-                              .toStringAsFixed(3),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const InfoKuliner(),
+                              ),
+                            );
+                          },
+                          header: 'Info Kuliner',
                           subtitle: 'Info Kuliner',
                         ),
                       ],

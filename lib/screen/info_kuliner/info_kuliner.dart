@@ -1,13 +1,11 @@
-// ignore_for_file: file_names
-
-import 'package:dolan_banjarnegara/model/wisata.dart';
+import 'package:dolan_banjarnegara/model/kuliner.dart';
 import 'package:dolan_banjarnegara/screen/info_wisata/widgets/container_card.dart';
 import 'package:dolan_banjarnegara/shared/footer.dart';
 import 'package:dolan_banjarnegara/shared/header.dart';
 import 'package:flutter/material.dart';
 
-class InfoWisata extends StatelessWidget {
-  const InfoWisata({Key key}) : super(key: key);
+class InfoKuliner extends StatelessWidget {
+  const InfoKuliner({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class InfoWisata extends StatelessWidget {
         child: Column(
           children: [
             const ContainerHeader(
-              url: 'https://i.ibb.co/6F4zvZL/image-23.png',
+              url: 'https://i.ibb.co/nwwRmDy/Group-6-1.png',
             ),
             SizedBox(
               height: 1000,
@@ -32,11 +30,12 @@ class InfoWisata extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: const [
                           Icon(
-                            Icons.luggage_rounded,
+                            Icons.bed_rounded,
                             size: 65,
                             color: Color(0xff49BCC3),
                           ),
-                          Text('Info Wisata', style: TextStyle(fontSize: 36)),
+                          Text('Info Penginapan',
+                              style: TextStyle(fontSize: 36)),
                         ],
                       ),
                     ),
@@ -45,25 +44,25 @@ class InfoWisata extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
+                        children:  <Widget>[
                           ContainerCard(
-                            nama: wisata[0].title,
-                            url: wisata[0].image,
+                            nama: kuliner[0].title,
+                            url: kuliner[0].image,
                           ),
                           const SizedBox(height: 25),
                           ContainerCard(
-                            nama: wisata[1].title,
-                            url: wisata[1].image,
+                             nama: kuliner[1].title,
+                            url: kuliner[1].image,
                           ),
                           const SizedBox(height: 25),
                           ContainerCard(
-                            nama: wisata[2].title,
-                            url: wisata[2].image,
+                            nama: kuliner[2].title,
+                            url: kuliner[2].image,
                           ),
                           const SizedBox(height: 25),
                           ContainerCard(
-                            nama: wisata[3].title,
-                            url: wisata[3].image,
+                            nama: kuliner[3].title,
+                            url: kuliner[3].image,
                           ),
                         ],
                       ),

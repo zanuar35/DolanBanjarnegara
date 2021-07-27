@@ -15,13 +15,14 @@ class LoginScreen extends StatefulWidget {
 
 final emailController = TextEditingController();
 final passController = TextEditingController();
-final formKey = GlobalKey<FormState>();
+
+GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: _abcKey,
       child: Scaffold(
           body: Container(
         child: Column(

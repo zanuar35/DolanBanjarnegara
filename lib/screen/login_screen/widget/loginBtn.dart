@@ -40,7 +40,7 @@ class LoginBtn extends StatelessWidget {
           child: const FittedBox(
             child: Text(
               'Login',
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: 20, color: Colors.black),
             ),
           ),
           onPressed: () async {

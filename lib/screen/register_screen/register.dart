@@ -14,22 +14,19 @@ class RegistScreen extends StatefulWidget {
 
   @override
   State<RegistScreen> createState() => _RegistScreenState();
-
-  
 }
+
 final emailController = TextEditingController();
 final passController = TextEditingController();
 final nameContoller = TextEditingController();
 final verifyPassController = TextEditingController();
-final formKey = GlobalKey<FormState>();
-
-
+final _formKey = GlobalKey<FormState>();
 
 class _RegistScreenState extends State<RegistScreen> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: _formKey,
       child: Scaffold(
           body: Container(
         child: Column(
@@ -48,12 +45,7 @@ class _RegistScreenState extends State<RegistScreen> {
                             'https://i.ibb.co/nQWtb26/Group-1.png')),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                        );
+                        Navigator.pop(context);
                       },
                       child: Container(
                         height: (MediaQuery.of(context).size.height / 10) * 1,
@@ -307,8 +299,7 @@ class _RegistScreenState extends State<RegistScreen> {
                                     UserCredential userCredential =
                                         await FirebaseAuth.instance
                                             .createUserWithEmailAndPassword(
-                                                email:
-                                                    "barry.allen@example.com",
+                                                email: "rahmat@yahoo.com",
                                                 password:
                                                     "SuperSecretPassword!");
                                     final User user = userCredential.user;

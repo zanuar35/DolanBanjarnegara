@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 class PassFormField extends StatelessWidget {
-   PassFormField({
-     this.finalpassController,
+  PassFormField({
+    this.finalpassController,
     Key key,
   }) : super(key: key);
 
