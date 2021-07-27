@@ -1,8 +1,11 @@
 // ignore_for_file: avoid_print
 
+import 'dart:async';
+
 import 'package:dolan_banjarnegara/screen/login_screen/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class RegistScreen extends StatefulWidget {
   const RegistScreen({
@@ -11,13 +14,16 @@ class RegistScreen extends StatefulWidget {
 
   @override
   State<RegistScreen> createState() => _RegistScreenState();
-}
 
+  
+}
 final emailController = TextEditingController();
 final passController = TextEditingController();
 final nameContoller = TextEditingController();
 final verifyPassController = TextEditingController();
 final formKey = GlobalKey<FormState>();
+
+
 
 class _RegistScreenState extends State<RegistScreen> {
   @override
@@ -293,10 +299,10 @@ class _RegistScreenState extends State<RegistScreen> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  // print(nameContoller.text);
-                                  // print(emailController.text);
-                                  // print(passController.text);
-                                  // print(verifyPassController.text);
+                                  EasyLoading.show(
+                                    status: 'loading...',
+                                    maskType: EasyLoadingMaskType.black,
+                                  );
                                   try {
                                     UserCredential userCredential =
                                         await FirebaseAuth.instance
@@ -308,15 +314,24 @@ class _RegistScreenState extends State<RegistScreen> {
                                     final User user = userCredential.user;
                                     if (user != null) {
                                       print('Berhasil Register');
+                                      EasyLoading.showSuccess(
+                                          'Register Success');
+                                      Timer(const Duration(seconds: 2), () {
+                                        Navigator.pop(context);
+                                      });
                                     }
                                   } on FirebaseAuthException catch (e) {
                                     if (e.code == 'weak-password') {
                                       print(
                                           'The password provided is too weak.');
+                                      EasyLoading.showError(
+                                          'Password terlalu pendek');
                                     } else if (e.code ==
                                         'email-already-in-use') {
                                       print(
                                           'The account already exists for that email.');
+                                      EasyLoading.showError(
+                                          'Email Telah digunakan');
                                     }
                                   } catch (e) {
                                     print(e);

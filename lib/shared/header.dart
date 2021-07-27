@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:dolan_banjarnegara/screen/dashboard/dashboard.dart';
+import 'package:dolan_banjarnegara/screen/login_screen/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class ContainerHeader extends StatelessWidget {
   const ContainerHeader({
@@ -53,27 +58,28 @@ class ContainerHeader extends StatelessWidget {
                           style: TextStyle(color: Colors.white)),
                       const Text('About Us',
                           style: TextStyle(color: Colors.white)),
-                      Container(
-                        width: blockHorizontal * 6.25,
-                        height: blockVertical * 5,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff49BCC3),
-                          borderRadius: BorderRadius.circular(20),
+                      InkWell(
+                        onTap: () async {
+                          await FirebaseAuth.instance.signOut();
+                          EasyLoading.showSuccess('Bye Bye :(');
+                          Timer(const Duration(seconds: 2), () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginScreen()));
+                          });
+                        },
+                        child: Container(
+                          width: blockHorizontal * 6.25,
+                          height: blockVertical * 5,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff49BCC3),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Center(
+                              child: Text('Log Out',
+                                  style: TextStyle(color: Colors.white))),
                         ),
-                        child: const Center(
-                            child: Text('Login',
-                                style: TextStyle(color: Colors.white))),
-                      ),
-                      Container(
-                        width: blockHorizontal * 6.25,
-                        height: blockVertical * 5,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff49BCC3),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: const Center(
-                            child: Text('Register',
-                                style: TextStyle(color: Colors.white))),
                       )
                     ],
                   ),
