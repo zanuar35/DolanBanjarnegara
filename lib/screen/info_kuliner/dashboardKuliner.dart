@@ -1,11 +1,13 @@
 // ignore_for_file: file_names, must_be_immutable
 
+import 'package:dolan_banjarnegara/model/kuliner.dart';
 import 'package:dolan_banjarnegara/shared/footer.dart';
 import 'package:dolan_banjarnegara/shared/header.dart';
 import 'package:flutter/material.dart';
 
 class DashboardKuliner extends StatelessWidget {
   DashboardKuliner({
+    int index,
     Key key,
     this.title,
     this.url,
@@ -15,6 +17,7 @@ class DashboardKuliner extends StatelessWidget {
   String title;
   String url;
   String deskripsi;
+  int index;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,7 @@ class DashboardKuliner extends StatelessWidget {
                     children: <Widget>[
                       SizedBox(height: MediaQuery.of(context).size.height / 6),
                       Text(
-                        title,
+                        kuliner[index].title,
                         style: const TextStyle(fontSize: 36),
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height / 15),
@@ -42,13 +45,14 @@ class DashboardKuliner extends StatelessWidget {
                         height: MediaQuery.of(context).size.height / 3,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(url), fit: BoxFit.cover),
+                                image: NetworkImage(kuliner[index].image),
+                                fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(10)),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 20),
                         child: Text(
-                          deskripsi,
+                          kuliner[index].description,
                           style: const TextStyle(height: 2, fontSize: 18),
                         ),
                       )

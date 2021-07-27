@@ -1,4 +1,5 @@
 import 'package:dolan_banjarnegara/model/penginapan.dart';
+import 'package:dolan_banjarnegara/screen/info_penginapan/dashboardPenginapan.dart';
 import 'package:dolan_banjarnegara/shared/footer.dart';
 import 'package:dolan_banjarnegara/shared/header.dart';
 import 'package:flutter/material.dart';
@@ -43,26 +44,14 @@ class InfoPenginapan extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            ContainerCard(
-                              nama: penginapan[0].title,
-                              url: penginapan[0].image,
-                            ),
-                            const SizedBox(height: 25),
-                            ContainerCard(
-                              nama: penginapan[1].title,
-                              url: penginapan[1].image,
-                            ),
-                            const SizedBox(height: 25),
-                            ContainerCard(
-                              nama: penginapan[2].title,
-                              url: penginapan[2].image,
-                            ),
-                            const SizedBox(height: 25),
-                            ContainerCard(
-                              nama: penginapan[3].title,
-                              url: penginapan[3].image,
-                            )
+                          children: const <Widget>[
+                            ContainerCard(index: 0),
+                            SizedBox(height: 25),
+                            ContainerCard(index: 1),
+                            SizedBox(height: 25),
+                            ContainerCard(index: 2),
+                            SizedBox(height: 25),
+                            ContainerCard(index: 3)
                           ],
                         ))
                   ],
@@ -79,13 +68,11 @@ class InfoPenginapan extends StatelessWidget {
 
 class ContainerCard extends StatelessWidget {
   const ContainerCard({
-    this.url,
+    this.index,
     Key key,
-    this.nama,
   }) : super(key: key);
 
-  final String url;
-  final String nama;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +92,8 @@ class ContainerCard extends StatelessWidget {
               height: blockVertical * 24.6,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(url), fit: BoxFit.cover),
+                    image: NetworkImage(penginapan[index].image),
+                    fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
@@ -113,7 +101,7 @@ class ContainerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  nama,
+                  penginapan[index].title,
                   style: TextStyle(fontSize: blockHorizontal * 2.8),
                 ),
                 Text(
@@ -121,18 +109,32 @@ class ContainerCard extends StatelessWidget {
                     style: TextStyle(fontSize: blockHorizontal * 1.17))
               ],
             ),
-            Container(
-                width: blockHorizontal * 7.8,
-                height: blockVertical * 6.5,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xff49BCC3)),
-                child: const Center(
-                  child: Text(
-                    'Lihat',
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DashboardPenginapan(
+                      title: penginapan[index].title,
+                      url: penginapan[index].image,
+                      deskripsi: penginapan[index].description,
+                    ),
                   ),
-                ))
+                );
+              },
+              child: Container(
+                  width: blockHorizontal * 7.8,
+                  height: blockVertical * 6.5,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xff49BCC3)),
+                  child: const Center(
+                    child: Text(
+                      'Lihat',
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  )),
+            )
           ],
         ),
       ),

@@ -1,9 +1,10 @@
+// ignore_for_file: file_names
 // ignore_for_file: must_be_immutable
 
 import 'package:dolan_banjarnegara/model/wisata.dart';
+import 'package:dolan_banjarnegara/screen/info_kuliner/dashboardKuliner.dart';
 import 'package:flutter/material.dart';
 
-import '../dashboard_infoWisata.dart';
 
 class ContainerCard extends StatelessWidget {
   const ContainerCard({
@@ -53,7 +54,7 @@ class ContainerCard extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DashboardWisata(index: index),
+                    builder: (context) => DashboardKuliner(index: index),
                   ),
                 );
               },

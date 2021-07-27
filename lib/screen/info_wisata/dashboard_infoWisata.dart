@@ -1,15 +1,13 @@
 // ignore_for_file: file_names, must_be_immutable
+import 'package:dolan_banjarnegara/model/wisata.dart';
 import 'package:dolan_banjarnegara/shared/footer.dart';
 import 'package:dolan_banjarnegara/shared/header.dart';
 import 'package:flutter/material.dart';
 
 class DashboardWisata extends StatelessWidget {
-  DashboardWisata({Key key, this.deskripsi, this.title, this.url})
-      : super(key: key);
+  DashboardWisata({Key key, this.index}) : super(key: key);
 
-  String title;
-  String url;
-  String deskripsi;
+  int index;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class DashboardWisata extends StatelessWidget {
                     children: <Widget>[
                       SizedBox(height: MediaQuery.of(context).size.height / 6),
                       Text(
-                        title,
+                        wisata[index].title,
                         style: const TextStyle(fontSize: 36),
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height / 15),
@@ -37,13 +35,14 @@ class DashboardWisata extends StatelessWidget {
                         height: MediaQuery.of(context).size.height / 3,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(url), fit: BoxFit.cover),
+                                image: NetworkImage(wisata[index].image),
+                                fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(10)),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 20),
                         child: Text(
-                          deskripsi,
+                          wisata[index].description,
                           style: const TextStyle(height: 2, fontSize: 18),
                         ),
                       )
