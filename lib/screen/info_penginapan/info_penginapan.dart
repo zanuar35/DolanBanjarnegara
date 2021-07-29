@@ -114,11 +114,7 @@ class ContainerCard extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DashboardPenginapan(
-                      title: penginapan[index].title,
-                      url: penginapan[index].image,
-                      deskripsi: penginapan[index].description,
-                    ),
+                    builder: (context) => DashboardPenginapan(index: index),
                   ),
                 );
               },

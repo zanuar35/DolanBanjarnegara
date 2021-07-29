@@ -24,6 +24,8 @@ final _formKey = GlobalKey<FormState>();
 class _RegistScreenState extends State<RegistScreen> {
   @override
   Widget build(BuildContext context) {
+    double blockHorizontal = (MediaQuery.of(context).size.width / 100);
+    double blockVertical = (MediaQuery.of(context).size.height / 100);
     return Form(
       key: _formKey,
       child: Scaffold(
@@ -39,9 +41,13 @@ class _RegistScreenState extends State<RegistScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    const Image(
-                        image: NetworkImage(
-                            'https://i.ibb.co/nQWtb26/Group-1.png')),
+                    Container(
+                      height: (MediaQuery.of(context).size.height / 10) * 1,
+                      width: MediaQuery.of(context).size.width / 4,
+                      child: const Image(
+                          image: NetworkImage(
+                              'https://i.ibb.co/nQWtb26/Group-1.png')),
+                    ),
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);
@@ -50,10 +56,12 @@ class _RegistScreenState extends State<RegistScreen> {
                         height: (MediaQuery.of(context).size.height / 10) * 1,
                         width: (MediaQuery.of(context).size.width / 10) * 0.8,
                         color: const Color(0xff49BCC3),
-                        child: const Center(
+                        child: Center(
                           child: Text(
                             'Login',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: blockHorizontal * 1.5),
                           ),
                         ),
                       ),
@@ -91,18 +99,17 @@ class _RegistScreenState extends State<RegistScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        const SizedBox(
-                          height: 50,
+                        SizedBox(
+                          height: blockVertical * 8.2,
                         ),
-                        const Text(
+                        Text(
                           'Register To DolanBanjarnegara',
-                          style: TextStyle(color: Colors.white, fontSize: 32),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: blockHorizontal * 2.5),
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const SizedBox(
-                          height: 30,
+                        SizedBox(
+                          height: blockVertical * 8.2,
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width / 3.5,
@@ -110,16 +117,17 @@ class _RegistScreenState extends State<RegistScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Align(
+                              Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                   'Nama Lengkap',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
+                                      color: Colors.white,
+                                      fontSize: blockHorizontal * 1.09),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: blockVertical * 1.6,
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.5,
@@ -151,19 +159,20 @@ class _RegistScreenState extends State<RegistScreen> {
                                   ),
                                 )),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: blockVertical * 1.6,
                               ),
-                              const Align(
+                              Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                   'Email',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
+                                      color: Colors.white,
+                                      fontSize: blockHorizontal * 1.09),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: blockVertical * 1.6,
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.5,
@@ -206,8 +215,8 @@ class _RegistScreenState extends State<RegistScreen> {
                                       color: Colors.white, fontSize: 14),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: blockVertical * 1.6,
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.5,
@@ -240,8 +249,8 @@ class _RegistScreenState extends State<RegistScreen> {
                                   ),
                                 )),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: blockVertical * 1.6,
                               ),
                               const Align(
                                 alignment: Alignment.centerLeft,
@@ -251,8 +260,8 @@ class _RegistScreenState extends State<RegistScreen> {
                                       color: Colors.white, fontSize: 14),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: blockVertical * 1.6,
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.5,
@@ -294,37 +303,44 @@ class _RegistScreenState extends State<RegistScreen> {
                                     status: 'loading...',
                                     maskType: EasyLoadingMaskType.black,
                                   );
-                                  try {
-                                    UserCredential userCredential =
-                                        await FirebaseAuth.instance
-                                            .createUserWithEmailAndPassword(
-                                                email: "rahmat@yahoo.com",
-                                                password:
-                                                    "SuperSecretPassword!");
-                                    final User user = userCredential.user;
-                                    if (user != null) {
-                                      print('Berhasil Register');
-                                      EasyLoading.showSuccess(
-                                          'Register Success');
-                                      Timer(const Duration(seconds: 2), () {
-                                        Navigator.pop(context);
-                                      });
+                                  if (emailController.text.isNotEmpty &&
+                                      passController.text.isNotEmpty &&
+                                      verifyPassController.text.isNotEmpty &&
+                                      nameContoller.text.isNotEmpty) {
+                                    try {
+                                      UserCredential userCredential =
+                                          await FirebaseAuth.instance
+                                              .createUserWithEmailAndPassword(
+                                                  email: emailController.text,
+                                                  password:
+                                                      passController.text);
+                                      final User user = userCredential.user;
+                                      if (user != null) {
+                                        print('Berhasil Register');
+                                        EasyLoading.showSuccess(
+                                            'Register Success');
+                                        Timer(const Duration(seconds: 2), () {
+                                          Navigator.pop(context);
+                                        });
+                                      }
+                                    } on FirebaseAuthException catch (e) {
+                                      if (e.code == 'weak-password') {
+                                        print(
+                                            'The password provided is too weak.');
+                                        EasyLoading.showError(
+                                            'Password terlalu pendek');
+                                      } else if (e.code ==
+                                          'email-already-in-use') {
+                                        print(
+                                            'The account already exists for that email.');
+                                        EasyLoading.showError(
+                                            'Email Telah digunakan');
+                                      }
+                                    } catch (e) {
+                                      print(e);
                                     }
-                                  } on FirebaseAuthException catch (e) {
-                                    if (e.code == 'weak-password') {
-                                      print(
-                                          'The password provided is too weak.');
-                                      EasyLoading.showError(
-                                          'Password terlalu pendek');
-                                    } else if (e.code ==
-                                        'email-already-in-use') {
-                                      print(
-                                          'The account already exists for that email.');
-                                      EasyLoading.showError(
-                                          'Email Telah digunakan');
-                                    }
-                                  } catch (e) {
-                                    print(e);
+                                  } else {
+                                    EasyLoading.showError('Field kosong');
                                   }
                                 },
                                 child: Container(
@@ -342,10 +358,11 @@ class _RegistScreenState extends State<RegistScreen> {
                                           color: Colors.black.withOpacity(0.3))
                                     ],
                                   ),
-                                  child: const Center(
+                                  child: Center(
                                     child: Text('Buat Akun',
                                         style: TextStyle(
-                                            color: Colors.black, fontSize: 18)),
+                                            color: Colors.black,
+                                            fontSize: blockHorizontal * 1.4)),
                                   ),
                                 ),
                               ),

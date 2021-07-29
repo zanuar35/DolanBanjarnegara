@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:dolan_banjarnegara/screen/dashboard/dashboard.dart';
+import 'package:dolan_banjarnegara/screen/info_kuliner/info_kuliner.dart';
+import 'package:dolan_banjarnegara/screen/info_penginapan/info_penginapan.dart';
+import 'package:dolan_banjarnegara/screen/info_wisata/info_wisata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -49,12 +52,42 @@ class ContainerHeader extends StatelessWidget {
                           },
                           child: const Text('Home',
                               style: TextStyle(color: Colors.white))),
-                      const Text('Info Wisata',
-                          style: TextStyle(color: Colors.white)),
-                      const Text('Info Penginapan',
-                          style: TextStyle(color: Colors.white)),
-                      const Text('Info Kuliner',
-                          style: TextStyle(color: Colors.white)),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const InfoWisata(),
+                            ),
+                          );
+                        },
+                        child: const Text('Info Wisata',
+                            style: TextStyle(color: Colors.white)),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const InfoPenginapan(),
+                            ),
+                          );
+                        },
+                        child: const Text('Info Penginapan',
+                            style: TextStyle(color: Colors.white)),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const InfoKuliner(),
+                            ),
+                          );
+                        },
+                        child: const Text('Info Kuliner',
+                            style: TextStyle(color: Colors.white)),
+                      ),
                       const Text('About Us',
                           style: TextStyle(color: Colors.white)),
                       InkWell(

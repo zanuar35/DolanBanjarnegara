@@ -1,4 +1,5 @@
 import 'package:dolan_banjarnegara/screen/dashboard/dashboard.dart';
+import 'package:dolan_banjarnegara/screen/login_screen/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Dashboard(),
+      home: const LoginScreen(),
       builder: EasyLoading.init(),
     );
   }

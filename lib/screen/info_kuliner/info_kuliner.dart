@@ -29,12 +29,11 @@ class InfoKuliner extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: const [
                           Icon(
-                            Icons.bed_rounded,
+                            Icons.dinner_dining_rounded,
                             size: 65,
                             color: Color(0xff49BCC3),
                           ),
-                          Text('Info Penginapan',
-                              style: TextStyle(fontSize: 36)),
+                          Text('Info Kuliner', style: TextStyle(fontSize: 36)),
                         ],
                       ),
                     ),

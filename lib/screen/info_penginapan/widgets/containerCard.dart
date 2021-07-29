@@ -1,8 +1,7 @@
 // ignore_for_file: file_names
-// ignore_for_file: must_be_immutable
 
-import 'package:dolan_banjarnegara/model/kuliner.dart';
-import 'package:dolan_banjarnegara/screen/info_kuliner/dashboardKuliner.dart';
+import 'package:dolan_banjarnegara/model/penginapan.dart';
+import 'package:dolan_banjarnegara/screen/info_penginapan/dashboardPenginapan.dart';
 import 'package:flutter/material.dart';
 
 class ContainerCard extends StatelessWidget {
@@ -31,7 +30,7 @@ class ContainerCard extends StatelessWidget {
               height: blockVertical * 24.6,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(kuliner[index].image), // url foto
+                    image: NetworkImage(penginapan[index].image),
                     fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(15),
               ),
@@ -40,11 +39,11 @@ class ContainerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  kuliner[index].title, // title
+                  penginapan[index].title,
                   style: TextStyle(fontSize: blockHorizontal * 2.8),
                 ),
                 Text(
-                    'Banjarnegara 22 Juli 2021 - Info kuliner Banjarnegara selangkapnya klik “Lihat”',
+                    'Banjarnegara 22 Juli 2021 - Info wisata Banjarnegara selangkapnya klik “Lihat”',
                     style: TextStyle(fontSize: blockHorizontal * 1.17))
               ],
             ),
@@ -53,7 +52,9 @@ class ContainerCard extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DashboardKuliner(index: index),
+                    builder: (context) => DashboardPenginapan(
+                      index: index,
+                    ),
                   ),
                 );
               },

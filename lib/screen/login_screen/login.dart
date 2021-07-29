@@ -21,6 +21,8 @@ GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    double blockHorizontal = (MediaQuery.of(context).size.width / 100);
+    double blockVertical = (MediaQuery.of(context).size.height / 100);
     return Form(
       key: _abcKey,
       child: Scaffold(
@@ -36,9 +38,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    const Image(
-                        image: NetworkImage(
-                            'https://i.ibb.co/nQWtb26/Group-1.png')),
+                    Container(
+                      height: (MediaQuery.of(context).size.height / 10) * 1,
+                      width: MediaQuery.of(context).size.width / 4,
+                      child: const Image(
+                          image: NetworkImage(
+                              'https://i.ibb.co/nQWtb26/Group-1.png')),
+                    ),
                     InkWell(
                       onTap: () => Navigator.push(
                         context,
@@ -50,10 +56,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: (MediaQuery.of(context).size.height / 10) * 1,
                         width: (MediaQuery.of(context).size.width / 10) * 0.8,
                         color: const Color(0xff49BCC3),
-                        child: const Center(
+                        child: Center(
                           child: Text(
                             'Sign Up',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: blockHorizontal * 1.5),
                           ),
                         ),
                       ),
@@ -91,24 +99,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        const SizedBox(
-                          height: 50,
+                        SizedBox(
+                          height: blockVertical * 8.2,
                         ),
-                        const Text(
+                        Text(
                           'Log in To DolanBanjarnegara',
-                          style: TextStyle(color: Colors.white, fontSize: 32),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: blockHorizontal * 2.5),
                         ),
-                        const SizedBox(
-                          height: 20,
+                        SizedBox(
+                          height: blockVertical * 3.2,
                         ),
                         Text(
                           'Hi! Selamat Datang Kembali, Silahkan Log In',
                           style: TextStyle(
                               color: Colors.white.withOpacity(0.62),
-                              fontSize: 22),
+                              fontSize: blockHorizontal * 1.7),
                         ),
-                        const SizedBox(
-                          height: 20,
+                        SizedBox(
+                          height: blockVertical * 3.2,
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width / 3.5,
@@ -116,40 +126,39 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Align(
+                              Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                   'email',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
+                                      color: Colors.white,
+                                      fontSize: blockHorizontal * 1.09),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: blockVertical * 1.6,
                               ),
                               EmailTextField(emailController: emailController),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: blockVertical * 3.2,
                               ),
-                              const Align(
+                              Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                   'Password',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
+                                      color: Colors.white,
+                                      fontSize: blockHorizontal * 1.09),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: blockVertical * 1.6,
                               ),
                               PassFormField(
                                 finalpassController: passController,
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const SizedBox(
-                                height: 30,
+                              SizedBox(
+                                height: blockVertical * 6.5,
                               ),
                               LoginBtn(
                                   emailController: emailController,

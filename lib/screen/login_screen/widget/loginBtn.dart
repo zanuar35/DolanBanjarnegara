@@ -17,8 +17,15 @@ class LoginBtn extends StatelessWidget {
   var emailController = TextEditingController();
   var passController = TextEditingController();
 
+  void dispose() {
+    emailController.dispose();
+    passController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    double blockHorizontal = (MediaQuery.of(context).size.width / 100);
+    double blockVertical = (MediaQuery.of(context).size.height / 100);
     return Container(
       width: MediaQuery.of(context).size.width / 8,
       height: MediaQuery.of(context).size.height / 12,
@@ -37,10 +44,11 @@ class LoginBtn extends StatelessWidget {
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.white),
           ),
-          child: const FittedBox(
+          child: FittedBox(
             child: Text(
               'Login',
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: TextStyle(
+                  fontSize: blockHorizontal * 1.5, color: Colors.black),
             ),
           ),
           onPressed: () async {
@@ -60,6 +68,8 @@ class LoginBtn extends StatelessWidget {
                 if (user != null) {
                   EasyLoading.showSuccess('Login Success');
                   print('Berhasil Login');
+                  emailController.clear();
+                  passController.clear();
                   Timer(const Duration(seconds: 2), () {
                     Navigator.push(
                         context,

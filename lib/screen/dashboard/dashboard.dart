@@ -5,8 +5,15 @@ import 'package:dolan_banjarnegara/shared/footer.dart';
 import 'package:dolan_banjarnegara/shared/header.dart';
 import 'package:flutter/material.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
   const Dashboard({Key key}) : super(key: key);
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +35,7 @@ class Dashboard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         ContainerCard(
+                            icons: Icons.hiking_rounded,
                             header: 'info Wisata',
                             subtitle: 'Info Wisata',
                             onPressed: () {
@@ -47,6 +55,7 @@ class Dashboard extends StatelessWidget {
                               ),
                             );
                           },
+                          icons: Icons.ramen_dining_rounded,
                           header: 'Info Kuliner',
                           subtitle: 'Info Kuliner',
                         ),
@@ -65,6 +74,7 @@ class Dashboard extends StatelessWidget {
                               ),
                             );
                           },
+                          icons: Icons.hotel,
                           header: 'Info Penginapan',
                           subtitle: 'Info Penginapan',
                         ),
@@ -72,6 +82,7 @@ class Dashboard extends StatelessWidget {
                           onPressed: () {},
                           header: 'About Us ',
                           subtitle: '',
+                          icons: Icons.groups_rounded,
                         ),
                       ],
                     ),
@@ -94,11 +105,12 @@ class Dashboard extends StatelessWidget {
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width,
-                            height: 100,
+                            height: 200,
                             child: const Center(
                               child: Text(
-                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-                                  textAlign: TextAlign.center),
+                                  "Kabupaten Banjarnegara adalah sebuah kabupaten di Provinsi Jawa Tengah, Indonesia. Ibu kotanya juga bernama Banjarnegara. Kabupaten Banjarnegara terletak di antara 7° 12' - 7° 31' Lintang Selatan dan 109° 29' - 109° 45'50' Bujur Timur. Luas Wilayah Kabupaten Banjarnegara adalah 106.970,997 ha atau 3,10 % dari luas seluruh Wilayah Provinsi Jawa Tengah. Kabupaten ini berbatasan dengan Kabupaten Pekalongan dan Kabupaten Batang di sebelah utara, Kabupaten Wonosobo di sisi timur, Kabupaten Kebumen di sisi selatan, serta Kabupaten Banyumas dan Kabupaten Purbalingga di sebelah barat.",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 18)),
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -110,10 +122,6 @@ class Dashboard extends StatelessWidget {
                                     color: Colors.black.withOpacity(0.3))
                               ],
                             ),
-                          ),
-                          const Text(
-                            'Video Pesona Banjarnegara',
-                            style: TextStyle(fontSize: 36),
                           ),
                         ],
                       ),
@@ -135,12 +143,14 @@ class ContainerCard extends StatelessWidget {
     this.onPressed,
     this.subtitle,
     this.header,
+    this.icons,
     Key key,
   }) : super(key: key);
 
   final String header;
   final String subtitle;
   final VoidCallback onPressed;
+  final IconData icons;
 
   @override
   Widget build(BuildContext context) {
@@ -167,12 +177,16 @@ class ContainerCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Container(
-                width: 50,
-                height: 50,
-                color: Colors.blue,
-              ),
+                  width: 50,
+                  height: 50,
+                  child: Center(
+                      child: Icon(
+                    icons,
+                    color: Colors.blue,
+                    size: 50,
+                  ))),
               SizedBox(
-                width: blockHorizontal * 3.12,
+                width: blockHorizontal * 2,
               ),
               Center(
                 child: Column(

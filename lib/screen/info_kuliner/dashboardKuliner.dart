@@ -6,17 +6,8 @@ import 'package:dolan_banjarnegara/shared/header.dart';
 import 'package:flutter/material.dart';
 
 class DashboardKuliner extends StatelessWidget {
-  DashboardKuliner({
-    int index,
-    Key key,
-    this.title,
-    this.url,
-    this.deskripsi,
-  }) : super(key: key);
+  DashboardKuliner({this.index, Key key}) : super(key: key);
 
-  String title;
-  String url;
-  String deskripsi;
   int index;
 
   @override
